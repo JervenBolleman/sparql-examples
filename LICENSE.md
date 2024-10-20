@@ -1,8 +1,7 @@
-All example queries are dual licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)  and the MIT license as included below. The code arround the sparql-examples under src/ is only licensed under the MIT license included below. 
-
 The MIT License (MIT)
 
 Copyright (c) 2024 SIB Swiss Institute of Bioinformatics
+              2024 Egon Willighagen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
