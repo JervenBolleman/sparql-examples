@@ -6,4 +6,5 @@ at Maastricht University where we have a public SPARQL endpoint.
 
 In this github pages we have a HTML rendering for all them.
 
+ * [ChEMBL](./examples/ChEMBL/)
  * [WikiPathways](./examples/WikiPathways/)
