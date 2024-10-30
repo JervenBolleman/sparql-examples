@@ -184,7 +184,8 @@ SELECT ?AO ?AOname ?AOP (CONCAT('"',GROUP_CONCAT(?ChemicalName;SEPARATOR='","'),
   ?Stressor dc:title ?StressorName.
   OPTIONAL {?Stressor aopo:has_chemical_entity ?Chemical. 
             ?Chemical dc:title ?ChemicalName.}
-  FILTER regex (?AOname, "fibrosis", "i")}""" ;
+  FILTER regex (?AOname, "fibrosis", "i")}
+  ORDER BY DESC (?AO)""" ;
     schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
     dc:contributor "Marvin Martens" .
 
@@ -207,7 +208,8 @@ WHERE {
     ?taxon a ncbitaxon:131567; dc:title ?speciesname
     OPTIONAL {?ke mmo:0000000 ?method.}
 VALUES ?aop_id {"AOP 12" "AOP 57"}
-}""" ;
+} 
+ORDER BY ASC (?aop)""" ;
     schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
     dc:contributor "Marvin Martens" .
 
