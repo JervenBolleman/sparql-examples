@@ -4,7 +4,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 _:aopwiki_sparql_examples_prefixes a owl:Ontology ;
-  rdfs:comment ""This is a collection of AOP-Wiki SPARQL prefixes that are needed for the examples for use on different websites."" ;
+  rdfs:comment """This is a collection of AOP-Wiki SPARQL prefixes that are needed for the examples for use on different websites.""" ;
   owl:imports sh: .
 _:aopwiki_sparql_examples_prefixes sh:declare _:prefix_aop .
 _:prefix_aop sh:prefix "aop" ;

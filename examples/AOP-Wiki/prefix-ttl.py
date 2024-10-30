@@ -7,15 +7,15 @@ df = pd.read_csv("./AOP-Wiki-prefixes.tsv", sep="\t")
 ttl_filename = "prefixes.ttl"
 with open(ttl_filename, "w") as ttl_file:
     # Write TTL header and ontology information
-    ttl_file.write("""
+    ttl_file.write('''
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 _:aopwiki_sparql_examples_prefixes a owl:Ontology ;
-  rdfs:comment ""This is a collection of AOP-Wiki SPARQL prefixes that are needed for the examples for use on different websites."" ;
+  rdfs:comment """This is a collection of AOP-Wiki SPARQL prefixes that are needed for the examples for use on different websites.""" ;
   owl:imports sh: .
-""")
+''')
 
     # Iterate over the dataframe to create individual prefix declarations
     for _, row in df.iterrows():
