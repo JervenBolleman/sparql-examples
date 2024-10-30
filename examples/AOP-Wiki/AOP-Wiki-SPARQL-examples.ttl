@@ -11,7 +11,13 @@ ex:0 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """#This query takes all Stressor chemicals in the AOP-Wiki and their mappings to ChEBI IDs 
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+#This query takes all Stressor chemicals in the AOP-Wiki and their mappings to ChEBI IDs 
 #Then, these ChEBI IDs are used to look up human molecular pathways in WikiPathways
 
 
@@ -37,7 +43,11 @@ ex:1 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct ?tax (group_concat(distinct ?name;separator=" | ") as ?names) count(distinct ?keker) as ?n 
+    sh:select """PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX fn: <http://www.w3.org/2005/xpath-functions/#>
+PREFIX ncbitaxon: <http://purl.bioontology.org/ontology/NCBITAXON/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT  distinct ?tax (group_concat(distinct ?name;separator=" | ") as ?names) count(distinct ?keker) as ?n 
 WHERE {
     ?keker ncbitaxon:131567 ?taxon2.
 ?taxon2 a ncbitaxon:131567; dc:title ?name.
@@ -55,7 +65,14 @@ ex:2 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct  ?keid ?ketitle ?objectname ?prot ?assaytitle ?assay
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX mmo: <http://purl.obolibrary.org/obo/MMO_>
+PREFIX pato: <http://purl.obolibrary.org/obo/PATO_>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?objectname ?prot ?assaytitle ?assay
 WHERE {
     ?aop a aopo:AdverseOutcomePathway ;
         rdfs:label ?aop_id;
@@ -75,7 +92,12 @@ ex:3 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct  ?cas1 ?chemName ?AOPTitle
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX fn: <http://www.w3.org/2005/xpath-functions/#>
+PREFIX nci: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+SELECT  distinct  ?cas1 ?chemName ?AOPTitle
 WHERE {
     ?chem a cheminf:000000 ;
         dc:title ?chemName;
@@ -96,7 +118,12 @@ ex:4 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct  ?keid ?ketitle ?id ?ncbi
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?id ?ncbi
 WHERE {
     ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
     ?object skos:exactMatch ?id.
@@ -110,7 +137,13 @@ ex:5 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct  ?keid ?ketitle ?objectname ?uniprot ?prot
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX pato: <http://purl.obolibrary.org/obo/PATO_>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?objectname ?uniprot ?prot
 WHERE {
     ?aop a aopo:AdverseOutcomePathway ;
         rdfs:label ?aop_id;
@@ -127,7 +160,9 @@ ex:6 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT ?AOP ?AOPName
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?AOP ?AOPName
 WHERE {
  ?AOP a aopo:AdverseOutcomePathway ;
  dc:title ?AOPName . 
@@ -140,7 +175,11 @@ ex:7 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct  ?keid ?ketitle ?hgnc
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT  distinct  ?keid ?ketitle ?hgnc
 WHERE {
     ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
     ?object edam:data_2298 ?hgnc.
@@ -153,7 +192,9 @@ ex:8 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT ?CAS ?ChemicalName
+    sh:select """PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?CAS ?ChemicalName
 WHERE {
  ?cas a cheminf:000000 ;
  dc:title ?ChemicalName ;
@@ -167,7 +208,12 @@ ex:9 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct  ?keid ?ketitle ?id ?ensembl
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?id ?ensembl
 WHERE {
     ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
     ?object skos:exactMatch ?id.
@@ -181,7 +227,12 @@ ex:10 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct  ?keid ?ketitle ?id ?ensembl
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?id ?ensembl
 WHERE {
     ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
     ?object skos:exactMatch ?id.
@@ -195,7 +246,13 @@ ex:11 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  distinct  ?keid ?ketitle ?objectname ?prot
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX pato: <http://purl.obolibrary.org/obo/PATO_>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?objectname ?prot
 WHERE {
     ?aop a aopo:AdverseOutcomePathway ;
         rdfs:label ?aop_id;
@@ -221,7 +278,10 @@ ex:13 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT ?AO ?AOname ?AOP (CONCAT('"',GROUP_CONCAT(?ChemicalName;SEPARATOR='","'),'"') AS ?ChemicalNames) WHERE {
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX nci: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+SELECT ?AO ?AOname ?AOP (CONCAT('"',GROUP_CONCAT(?ChemicalName;SEPARATOR='","'),'"') AS ?ChemicalNames) WHERE {
   ?AO a aopo:KeyEvent ; 
   dc:identifier ?AOLookup ; 
   dc:title ?AOname . 
@@ -241,7 +301,12 @@ ex:14 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT  DISTINCT ?aop ?ke (group_concat(distinct ?speciesname;separator=" | ") as ?speciesnames) ?method
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX mmo: <http://purl.obolibrary.org/obo/MMO_>
+PREFIX ncbitaxon: <http://purl.bioontology.org/ontology/NCBITAXON/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT  DISTINCT ?aop ?ke (group_concat(distinct ?speciesname;separator=" | ") as ?speciesnames) ?method
 WHERE {
     ?aop a aopo:AdverseOutcomePathway ;
         rdfs:label ?aop_id;
@@ -268,7 +333,10 @@ ex:16 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT ?AOP ?AOPTitle WHERE { 
+    sh:select """PREFIX aop.events: <https://identifiers.org/aop.events/>
+PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?AOP ?AOPTitle WHERE { 
   ?AOP a aopo:AdverseOutcomePathway ; 
   dc:title ?AOPTitle ;
   aopo:has_adverse_outcome aop.events:1276.}""" ;
@@ -280,7 +348,10 @@ ex:17 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT ?MIEwebpage ?MolecularInitiatingEventName ?AOwebpage  ?AdverseOutcomeName WHERE { 
+    sh:select """PREFIX aop.events: <https://identifiers.org/aop.events/>
+PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?MIEwebpage ?MolecularInitiatingEventName ?AOwebpage  ?AdverseOutcomeName WHERE { 
   ?MIEwebpage dc:identifier ?MIELookup ; 
   dc:title ?MolecularInitiatingEventName . 
   ?AOPwebpage a aopo:AdverseOutcomePathway ; 
@@ -305,7 +376,9 @@ ex:19 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT DISTINCT ?dataset ?date
+    sh:select """PREFIX pav: <http://purl.org/pav/>
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT DISTINCT ?dataset ?date
 WHERE {
    ?dataset a void:Dataset ;
    pav:createdOn ?date .
@@ -336,7 +409,11 @@ ex:22 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT ?aop ?aoptitle ?CASID ?chemicalname
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX nci: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+SELECT ?aop ?aoptitle ?CASID ?chemicalname
 WHERE{
 ?aop a aopo:AdverseOutcomePathway; nci:C54571 ?Stressor; dc:title ?aoptitle.
 ?Stressor aopo:has_chemical_entity ?Chemical.
@@ -350,7 +427,10 @@ ex:23 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """SELECT ?CAS ?ChemicalName ?MatchingIDs
+    sh:select """PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?CAS ?ChemicalName ?MatchingIDs
 WHERE {
  ?CAS a cheminf:000000 ;
  dc:title ?ChemicalName ;
