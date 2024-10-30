@@ -1,0 +1,384 @@
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+_:aopwiki_sparql_examples_prefixes a owl:Ontology ;
+  rdfs:comment ""This is a collection of AOP-Wiki SPARQL prefixes that are needed for the examples for use on different websites."" ;
+  owl:imports sh: .
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_aop .
+_:prefix_aop sh:prefix "aop" ;
+  sh:namespace "https://identifiers.org/aop/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_aop.events .
+_:prefix_aop.events sh:prefix "aop.events" ;
+  sh:namespace "https://identifiers.org/aop.events/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_aop.relationships .
+_:prefix_aop.relationships sh:prefix "aop.relationships" ;
+  sh:namespace "https://identifiers.org/aop.relationships/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_aop.stressor .
+_:prefix_aop.stressor sh:prefix "aop.stressor" ;
+  sh:namespace "https://identifiers.org/aop.stressor/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_aopo .
+_:prefix_aopo sh:prefix "aopo" ;
+  sh:namespace "http://aopkb.org/aop_ontology#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_as .
+_:prefix_as sh:prefix "as" ;
+  sh:namespace "https://www.w3.org/ns/activitystreams#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_bif .
+_:prefix_bif sh:prefix "bif" ;
+  sh:namespace "http://www.openlinksw.com/schemas/bif#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_cas .
+_:prefix_cas sh:prefix "cas" ;
+  sh:namespace "https://identifiers.org/cas/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_chebi .
+_:prefix_chebi sh:prefix "chebi" ;
+  sh:namespace "https://identifiers.org/chebi/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_chebio .
+_:prefix_chebio sh:prefix "chebio" ;
+  sh:namespace "http://purl.obolibrary.org/obo/CHEBI_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_chembl.compound .
+_:prefix_chembl.compound sh:prefix "chembl.compound" ;
+  sh:namespace "https://identifiers.org/chembl.compound/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_cheminf .
+_:prefix_cheminf sh:prefix "cheminf" ;
+  sh:namespace "http://semanticscience.org/resource/CHEMINF_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_chemspider .
+_:prefix_chemspider sh:prefix "chemspider" ;
+  sh:namespace "https://identifiers.org/chemspider/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_cl .
+_:prefix_cl sh:prefix "cl" ;
+  sh:namespace "http://purl.obolibrary.org/obo/CL_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_comptox .
+_:prefix_comptox sh:prefix "comptox" ;
+  sh:namespace "https://comptox.epa.gov/dashboard/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_dawgt .
+_:prefix_dawgt sh:prefix "dawgt" ;
+  sh:namespace "http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_dbpedia .
+_:prefix_dbpedia sh:prefix "dbpedia" ;
+  sh:namespace "http://dbpedia.org/resource/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_dbpprop .
+_:prefix_dbpprop sh:prefix "dbpprop" ;
+  sh:namespace "http://dbpedia.org/property/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_dc .
+_:prefix_dc sh:prefix "dc" ;
+  sh:namespace "http://purl.org/dc/elements/1.1/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_dcat .
+_:prefix_dcat sh:prefix "dcat" ;
+  sh:namespace "http://www.w3.org/ns/dcat#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_dcterms .
+_:prefix_dcterms sh:prefix "dcterms" ;
+  sh:namespace "http://purl.org/dc/terms/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_drugbank .
+_:prefix_drugbank sh:prefix "drugbank" ;
+  sh:namespace "https://identifiers.org/drugbank/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_edam .
+_:prefix_edam sh:prefix "edam" ;
+  sh:namespace "http://edamontology.org/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ensembl .
+_:prefix_ensembl sh:prefix "ensembl" ;
+  sh:namespace "https://identifiers.org/ensembl/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_fma .
+_:prefix_fma sh:prefix "fma" ;
+  sh:namespace "http://purl.org/sig/ont/fma/fma"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_fn .
+_:prefix_fn sh:prefix "fn" ;
+  sh:namespace "http://www.w3.org/2005/xpath-functions/#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_foaf .
+_:prefix_foaf sh:prefix "foaf" ;
+  sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_formats .
+_:prefix_formats sh:prefix "formats" ;
+  sh:namespace "http://www.w3.org/ns/formats/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_geo .
+_:prefix_geo sh:prefix "geo" ;
+  sh:namespace "http://www.w3.org/2003/01/geo/wgs84_pos#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_go .
+_:prefix_go sh:prefix "go" ;
+  sh:namespace "http://purl.org/obo/owl/GO#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_gqi .
+_:prefix_gqi sh:prefix "gqi" ;
+  sh:namespace "http://www.openlinksw.com/schemas/graphql/intro#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_gql .
+_:prefix_gql sh:prefix "gql" ;
+  sh:namespace "http://www.openlinksw.com/schemas/graphql#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_gr .
+_:prefix_gr sh:prefix "gr" ;
+  sh:namespace "http://purl.org/goodrelations/v1#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_hgnc .
+_:prefix_hgnc sh:prefix "hgnc" ;
+  sh:namespace "https://identifiers.org/hgnc/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_hmdb .
+_:prefix_hmdb sh:prefix "hmdb" ;
+  sh:namespace "https://identifiers.org/hmdb/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_hp .
+_:prefix_hp sh:prefix "hp" ;
+  sh:namespace "http://purl.obolibrary.org/obo/HP_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_inchikey .
+_:prefix_inchikey sh:prefix "inchikey" ;
+  sh:namespace "https://identifiers.org/inchikey/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_kegg.compound .
+_:prefix_kegg.compound sh:prefix "kegg.compound" ;
+  sh:namespace "https://identifiers.org/kegg.compound/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ldp .
+_:prefix_ldp sh:prefix "ldp" ;
+  sh:namespace "http://www.w3.org/ns/ldp#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_lipidmaps .
+_:prefix_lipidmaps sh:prefix "lipidmaps" ;
+  sh:namespace "https://identifiers.org/lipidmaps/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_math .
+_:prefix_math sh:prefix "math" ;
+  sh:namespace "http://www.w3.org/2000/10/swap/math#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_mesh .
+_:prefix_mesh sh:prefix "mesh" ;
+  sh:namespace "http://purl.org/commons/record/mesh/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_mf .
+_:prefix_mf sh:prefix "mf" ;
+  sh:namespace "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_mi .
+_:prefix_mi sh:prefix "mi" ;
+  sh:namespace "http://purl.obolibrary.org/obo/MI_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_mmo .
+_:prefix_mmo sh:prefix "mmo" ;
+  sh:namespace "http://purl.obolibrary.org/obo/MMO_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_mp .
+_:prefix_mp sh:prefix "mp" ;
+  sh:namespace "http://purl.obolibrary.org/obo/MP_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_nbo .
+_:prefix_nbo sh:prefix "nbo" ;
+  sh:namespace "http://purl.obolibrary.org/obo/NBO_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ncbigene .
+_:prefix_ncbigene sh:prefix "ncbigene" ;
+  sh:namespace "https://identifiers.org/ncbigene/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ncbitaxon .
+_:prefix_ncbitaxon sh:prefix "ncbitaxon" ;
+  sh:namespace "http://purl.bioontology.org/ontology/NCBITAXON/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_nci .
+_:prefix_nci sh:prefix "nci" ;
+  sh:namespace "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_oa .
+_:prefix_oa sh:prefix "oa" ;
+  sh:namespace "http://www.w3.org/ns/oa#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_obo .
+_:prefix_obo sh:prefix "obo" ;
+  sh:namespace "http://www.geneontology.org/formats/oboInOwl#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ogc .
+_:prefix_ogc sh:prefix "ogc" ;
+  sh:namespace "http://www.opengis.net/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ogcgml .
+_:prefix_ogcgml sh:prefix "ogcgml" ;
+  sh:namespace "http://www.opengis.net/ont/gml#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ogcgs .
+_:prefix_ogcgs sh:prefix "ogcgs" ;
+  sh:namespace "http://www.opengis.net/ont/geosparql#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ogcgsf .
+_:prefix_ogcgsf sh:prefix "ogcgsf" ;
+  sh:namespace "http://www.opengis.net/def/function/geosparql/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ogcgsr .
+_:prefix_ogcgsr sh:prefix "ogcgsr" ;
+  sh:namespace "http://www.opengis.net/def/rule/geosparql/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_ogcsf .
+_:prefix_ogcsf sh:prefix "ogcsf" ;
+  sh:namespace "http://www.opengis.net/ont/sf#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_owl .
+_:prefix_owl sh:prefix "owl" ;
+  sh:namespace "http://www.w3.org/2002/07/owl#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_pato .
+_:prefix_pato sh:prefix "pato" ;
+  sh:namespace "http://purl.obolibrary.org/obo/PATO_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_pav .
+_:prefix_pav sh:prefix "pav" ;
+  sh:namespace "http://purl.org/pav/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_pco .
+_:prefix_pco sh:prefix "pco" ;
+  sh:namespace "http://purl.obolibrary.org/obo/PCO_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_pr .
+_:prefix_pr sh:prefix "pr" ;
+  sh:namespace "http://purl.obolibrary.org/obo/PR_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_product .
+_:prefix_product sh:prefix "product" ;
+  sh:namespace "http://www.buy.com/rss/module/productV2/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_protseq .
+_:prefix_protseq sh:prefix "protseq" ;
+  sh:namespace "http://purl.org/science/protein/bysequence/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_prov .
+_:prefix_prov sh:prefix "prov" ;
+  sh:namespace "http://www.w3.org/ns/prov#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_pubchem.compound .
+_:prefix_pubchem.compound sh:prefix "pubchem.compound" ;
+  sh:namespace "https://identifiers.org/pubchem.compound/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_rdf .
+_:prefix_rdf sh:prefix "rdf" ;
+  sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_rdfa .
+_:prefix_rdfa sh:prefix "rdfa" ;
+  sh:namespace "http://www.w3.org/ns/rdfa#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_rdfdf .
+_:prefix_rdfdf sh:prefix "rdfdf" ;
+  sh:namespace "http://www.openlinksw.com/virtrdf-data-formats#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_rdfs .
+_:prefix_rdfs sh:prefix "rdfs" ;
+  sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_sc .
+_:prefix_sc sh:prefix "sc" ;
+  sh:namespace "http://purl.org/science/owl/sciencecommons/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_scovo .
+_:prefix_scovo sh:prefix "scovo" ;
+  sh:namespace "http://purl.org/NET/scovo#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_sd .
+_:prefix_sd sh:prefix "sd" ;
+  sh:namespace "http://www.w3.org/ns/sparql-service-description#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_sioc .
+_:prefix_sioc sh:prefix "sioc" ;
+  sh:namespace "http://rdfs.org/sioc/ns#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_skos .
+_:prefix_skos sh:prefix "skos" ;
+  sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_sql .
+_:prefix_sql sh:prefix "sql" ;
+  sh:namespace "http://www.openlinksw.com/schemas/sql#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_stat .
+_:prefix_stat sh:prefix "stat" ;
+  sh:namespace "http://www.w3.org/ns/posix/stat#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_uberon .
+_:prefix_uberon sh:prefix "uberon" ;
+  sh:namespace "http://purl.obolibrary.org/obo/UBERON_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_uniprot .
+_:prefix_uniprot sh:prefix "uniprot" ;
+  sh:namespace "https://identifiers.org/uniprot/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_vcard .
+_:prefix_vcard sh:prefix "vcard" ;
+  sh:namespace "http://www.w3.org/2001/vcard-rdf/3.0#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_vcard2006 .
+_:prefix_vcard2006 sh:prefix "vcard2006" ;
+  sh:namespace "http://www.w3.org/2006/vcard/ns#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_virtcxml .
+_:prefix_virtcxml sh:prefix "virtcxml" ;
+  sh:namespace "http://www.openlinksw.com/schemas/virtcxml#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_virtrdf .
+_:prefix_virtrdf sh:prefix "virtrdf" ;
+  sh:namespace "http://www.openlinksw.com/schemas/virtrdf#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_void .
+_:prefix_void sh:prefix "void" ;
+  sh:namespace "http://rdfs.org/ns/void#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_vt .
+_:prefix_vt sh:prefix "vt" ;
+  sh:namespace "http://purl.obolibrary.org/obo/VT_"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_wikidata .
+_:prefix_wikidata sh:prefix "wikidata" ;
+  sh:namespace "https://identifiers.org/wikidata/"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_xf .
+_:prefix_xf sh:prefix "xf" ;
+  sh:namespace "http://www.w3.org/2004/07/xpath-functions"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_xml .
+_:prefix_xml sh:prefix "xml" ;
+  sh:namespace "http://www.w3.org/XML/1998/namespace"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_xsd .
+_:prefix_xsd sh:prefix "xsd" ;
+  sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_xsl10 .
+_:prefix_xsl10 sh:prefix "xsl10" ;
+  sh:namespace "http://www.w3.org/XSL/Transform/1.0"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_xsl1999 .
+_:prefix_xsl1999 sh:prefix "xsl1999" ;
+  sh:namespace "http://www.w3.org/1999/XSL/Transform"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_xslwd .
+_:prefix_xslwd sh:prefix "xslwd" ;
+  sh:namespace "http://www.w3.org/TR/WD-xsl"^^xsd:anyURI .
+
+_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_yago .
+_:prefix_yago sh:prefix "yago" ;
+  sh:namespace "http://dbpedia.org/class/yago/"^^xsd:anyURI .
+
