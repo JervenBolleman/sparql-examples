@@ -6,8 +6,10 @@ at Maastricht University where we have a public SPARQL endpoint.
 
 In this github pages we have a HTML rendering for all them.
 
+ * [AOP-Wiki](./examples/AOPWiki/)
  * [ChEMBL](./examples/ChEMBL/)
  * [WikiPathways](./examples/WikiPathways/)
+
 
 This repository is based on the work by the [SIB Swiss Institute of Bioinformatics](https://www.sib.swiss/),
 and specifically [this website repository](https://github.com/sib-swiss/sparql-examples) and
