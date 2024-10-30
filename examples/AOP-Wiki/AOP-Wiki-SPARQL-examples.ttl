@@ -10,7 +10,7 @@
 ex:0 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """#This query takes all Stressor chemicals in the AOP-Wiki and their mappings to ChEBI IDs 
 #Then, these ChEBI IDs are used to look up human molecular pathways in WikiPathways
 
@@ -36,7 +36,7 @@ ORDER BY DESC (?ChemicalName)""" ;
 ex:1 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct ?tax (group_concat(distinct ?name;separator=" | ") as ?names) count(distinct ?keker) as ?n 
 WHERE {
     ?keker ncbitaxon:131567 ?taxon2.
@@ -54,7 +54,7 @@ FILTER (?tax = ?tax2)
 ex:2 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct  ?keid ?ketitle ?objectname ?prot ?assaytitle ?assay
 WHERE {
     ?aop a aopo:AdverseOutcomePathway ;
@@ -74,7 +74,7 @@ SERVICE <https://aopdb.rdf.bigcat-bioinformatics.org/sparql> {
 ex:3 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct  ?cas1 ?chemName ?AOPTitle
 WHERE {
     ?chem a cheminf:000000 ;
@@ -95,7 +95,7 @@ FILTER (?cas1 = ?cas3)
 ex:4 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct  ?keid ?ketitle ?id ?ncbi
 WHERE {
     ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
@@ -109,7 +109,7 @@ WHERE {
 ex:5 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct  ?keid ?ketitle ?objectname ?uniprot ?prot
 WHERE {
     ?aop a aopo:AdverseOutcomePathway ;
@@ -126,7 +126,7 @@ WHERE {
 ex:6 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT ?AOP ?AOPName
 WHERE {
  ?AOP a aopo:AdverseOutcomePathway ;
@@ -139,7 +139,7 @@ WHERE {
 ex:7 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct  ?keid ?ketitle ?hgnc
 WHERE {
     ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
@@ -152,7 +152,7 @@ WHERE {
 ex:8 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT ?CAS ?ChemicalName
 WHERE {
  ?cas a cheminf:000000 ;
@@ -166,7 +166,7 @@ WHERE {
 ex:9 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct  ?keid ?ketitle ?id ?ensembl
 WHERE {
     ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
@@ -180,7 +180,7 @@ WHERE {
 ex:10 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct  ?keid ?ketitle ?id ?ensembl
 WHERE {
     ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
@@ -194,7 +194,7 @@ WHERE {
 ex:11 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  distinct  ?keid ?ketitle ?objectname ?prot
 WHERE {
     ?aop a aopo:AdverseOutcomePathway ;
@@ -211,7 +211,7 @@ WHERE {
 ex:12 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """select (COUNT(?p) as ?Predicates)  where {?s ?p ?o. FILTER regex(?p, "http://aopkb.org/aop_ontology#")}""" ;
     schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
     dc:contributor "Marvin Martens" .
@@ -220,7 +220,7 @@ ex:12 a sh:SPARQLExecutable,
 ex:13 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT ?AO ?AOname ?AOP (CONCAT('"',GROUP_CONCAT(?ChemicalName;SEPARATOR='","'),'"') AS ?ChemicalNames) WHERE {
   ?AO a aopo:KeyEvent ; 
   dc:identifier ?AOLookup ; 
@@ -240,7 +240,7 @@ ex:13 a sh:SPARQLExecutable,
 ex:14 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT  DISTINCT ?aop ?ke (group_concat(distinct ?speciesname;separator=" | ") as ?speciesnames) ?method
 WHERE {
     ?aop a aopo:AdverseOutcomePathway ;
@@ -258,7 +258,7 @@ VALUES ?aop_id {"AOP 12" "AOP 57"}
 ex:15 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """select (COUNT(?o) as ?Objects)  where {?s ?p ?o. FILTER regex(?o, "http://aopkb.org/aop_ontology#")}""" ;
     schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
     dc:contributor "Marvin Martens" .
@@ -267,7 +267,7 @@ ex:15 a sh:SPARQLExecutable,
 ex:16 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT ?AOP ?AOPTitle WHERE { 
   ?AOP a aopo:AdverseOutcomePathway ; 
   dc:title ?AOPTitle ;
@@ -279,7 +279,7 @@ ex:16 a sh:SPARQLExecutable,
 ex:17 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT ?MIEwebpage ?MolecularInitiatingEventName ?AOwebpage  ?AdverseOutcomeName WHERE { 
   ?MIEwebpage dc:identifier ?MIELookup ; 
   dc:title ?MolecularInitiatingEventName . 
@@ -295,7 +295,7 @@ ex:17 a sh:SPARQLExecutable,
 ex:18 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """select (COUNT(distinct *) as ?Triples)  where {?s ?p ?o}""" ;
     schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
     dc:contributor "Marvin Martens" .
@@ -304,7 +304,7 @@ ex:18 a sh:SPARQLExecutable,
 ex:19 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT DISTINCT ?dataset ?date
 WHERE {
    ?dataset a void:Dataset ;
@@ -317,7 +317,7 @@ WHERE {
 ex:20 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """select (COUNT(?p) as ?Predicates)  where {?s ?p ?o. FILTER regex(?p, "http://aopkb.org/aop_ontology#")}""" ;
     schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
     dc:contributor "Marvin Martens" .
@@ -326,7 +326,7 @@ ex:20 a sh:SPARQLExecutable,
 ex:21 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """select (COUNT(?o) as ?Objects)  where {?s ?p ?o. FILTER regex(?o, "http://aopkb.org/aop_ontology#")}""" ;
     schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
     dc:contributor "Marvin Martens" .
@@ -335,7 +335,7 @@ ex:21 a sh:SPARQLExecutable,
 ex:22 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT ?aop ?aoptitle ?CASID ?chemicalname
 WHERE{
 ?aop a aopo:AdverseOutcomePathway; nci:C54571 ?Stressor; dc:title ?aoptitle.
@@ -349,7 +349,7 @@ WHERE{
 ex:23 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
     sh:select """SELECT ?CAS ?ChemicalName ?MatchingIDs
 WHERE {
  ?CAS a cheminf:000000 ;

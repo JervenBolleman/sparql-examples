@@ -42,7 +42,7 @@ for root, dirs, files in os.walk(input_directory):
 ex:{ex_counter} a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:aopwiki_sparql_examples_prefixes ;
+    sh:prefixes _:sparql_examples_prefixes ;
 """)
                 
                 # Insert the SPARQL query content

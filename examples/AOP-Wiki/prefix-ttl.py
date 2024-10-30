@@ -16,7 +16,7 @@ with open(ttl_filename, "a") as ttl_file:
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 _:aopwiki_sparql_examples_prefixes a owl:Ontology ;
-  rdfs:comment """This is a collection of AOP-Wiki SPARQL prefixes that are needed for the examples for use on different websites.""" ;
+  rdfs:comment """This is a collection of SPARQL prefixes that are needed for the examples for use on different websites.""" ;
   owl:imports sh: .
 ''')
 
@@ -25,7 +25,7 @@ _:aopwiki_sparql_examples_prefixes a owl:Ontology ;
         prefix, uri = row['Prefix'], row['URI']
         
         # Write the SHACL prefix declaration for each entry
-        ttl_file.write(f"_:aopwiki_sparql_examples_prefixes sh:declare _:prefix_{prefix} .\n")
+        ttl_file.write(f"_:sparql_examples_prefixes sh:declare _:prefix_{prefix} .\n")
         ttl_file.write(f"_:prefix_{prefix} sh:prefix \"{prefix}\" ;\n")
         ttl_file.write(f"  sh:namespace \"{uri}\"^^xsd:anyURI .\n\n")
 
