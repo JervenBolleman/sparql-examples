@@ -31,13 +31,14 @@ ex_counter = 0
 # Walk through all files in the input directory and subdirectories
 for root, dirs, files in os.walk(input_directory):
     for file in files:
-        if file.endswith(".rq"):
+        # Skip any files in the "F. Federated" folder
+        if file.endswith(".rq") and "F. Federated" not in root:
             # Construct full file path
             sparql_query_file = os.path.join(root, file)
             
             # Read the SPARQL query from the .rq file and filter out any existing "PREFIX" lines
             with open(sparql_query_file, "r") as query_file:
-                query_lines = [line for line in query_file]
+                query_lines = [line for line in query_file if not line.strip().startswith("PREFIX")]
                 sparql_query = "".join(query_lines)
 
             # Identify required prefixes based on keywords in the query

@@ -12,120 +12,6 @@ ex:0 a sh:SPARQLExecutable,
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
-PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-#This query takes all Stressor chemicals in the AOP-Wiki and their mappings to ChEBI IDs 
-#Then, these ChEBI IDs are used to look up human molecular pathways in WikiPathways
-
-PREFIX wp: <http://vocabularies.wikipathways.org/wp#>
-
-SELECT DISTINCT ?ChemicalName ?mappedid ?LinkedStressor (group_concat(?LinkedAOP;separator=',') as ?AOPs) (STR(?PathwayID) AS ?Pathway_ID) 
-(STR(?PathwayTitle) AS ?PathwayName) ?PathwayURI 
-
-WHERE{
-   ?cheLook a cheminf:000000; dc:title ?ChemicalName ; dcterms:isPartOf ?LinkedStressor ;
-      skos:exactMatch ?mappedid .
-   ?LinkedStressor dcterms:isPartOf ?LinkedAOPURI .
-   ?LinkedAOPURI a aopo:AdverseOutcomePathway ; rdfs:label ?LinkedAOP.
-   ?mappedid a cheminf:000407; cheminf:000407 ?ChEBI.
-   SERVICE <https://sparql.wikipathways.org/sparql>{ 
-     ?metabolite wp:bdbChEBI ?mappedid ; dcterms:isPartOf ?PathwayURI.
-     ?PathwayURI a wp:Pathway ; dcterms:identifier ?PathwayID ; 
-                   dc:title ?PathwayTitle ; wp:organismName "Homo sapiens" .}}
-ORDER BY DESC (?ChemicalName)""" ;
-    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
-    dc:contributor "Marvin Martens" .
-
-
-ex:1 a sh:SPARQLExecutable,
-       sh:SPARQLSelectExecutable ;
-    rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX fn: <http://www.w3.org/2005/xpath-functions/#>
-PREFIX ncbitaxon: <http://purl.bioontology.org/ontology/NCBITAXON/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT  distinct ?tax (group_concat(distinct ?name;separator=" | ") as ?names) count(distinct ?keker) as ?n 
-WHERE {
-    ?keker ncbitaxon:131567 ?taxon2.
-?taxon2 a ncbitaxon:131567; dc:title ?name.
-BIND (fn:substring(?taxon2,48) as ?tax2)
-SERVICE <http://sparql.uniprot.org/sparql/> {
-    ?taxon rdfs:subClassOf* taxon:39107 .} #taxon:39107 stands for Murinae. Replace with taxon:9989 for all rodents
-BIND (fn:substring(?taxon,34) as ?tax)
-FILTER (?tax = ?tax2)
-} order by desc (?n)""" ;
-    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
-    dc:contributor "Marvin Martens" .
-
-
-ex:2 a sh:SPARQLExecutable,
-       sh:SPARQLSelectExecutable ;
-    rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX edam: <http://edamontology.org/>
-PREFIX mmo: <http://purl.obolibrary.org/obo/MMO_>
-PREFIX pato: <http://purl.obolibrary.org/obo/PATO_>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-SELECT  distinct  ?keid ?ketitle ?objectname ?prot ?assaytitle ?assay
-WHERE {
-    ?aop a aopo:AdverseOutcomePathway ;
-        rdfs:label ?aop_id;
-        aopo:has_key_event ?ke.
-    ?ke pato:0001241 ?object; dc:title ?ketitle; rdfs:label ?keid.
-    ?object dc:title ?objectname; skos:exactMatch ?prot.
-    ?prot a edam:data_1027.
-SERVICE <https://aopdb.rdf.bigcat-bioinformatics.org/sparql> {
-?prot mmo:0000441 ?assay.
-?assay dc:title ?assaytitle.
-}}""" ;
-    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
-    dc:contributor "Marvin Martens" .
-
-
-ex:3 a sh:SPARQLExecutable,
-       sh:SPARQLSelectExecutable ;
-    rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
-PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX fn: <http://www.w3.org/2005/xpath-functions/#>
-PREFIX nci: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
-PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX prov: <http://www.w3.org/ns/prov#>
-SELECT  distinct  ?cas1 ?chemName ?AOPTitle
-WHERE {
-    ?chem a cheminf:000000 ;
-        dc:title ?chemName;
-        cheminf:000446 ?cas.
-    ?stressor aopo:has_chemical_entity ?chem.
-    ?aop a aopo:AdverseOutcomePathway; nci:C54571 ?stressor; dc:title ?AOPTitle.
-BIND (fn:substring(?cas,0) as ?cas1)
-    SERVICE <https://query.wikidata.org/sparql> {
-       ?wdchem wdt:P31 wd:Q407752; wdt:P231 ?cas2.} #Q187661 stands for carcinogen, Q72941151 stands for developmental toxicant, Q35456 stands for essential medicine, Q55427774 for male reproductive toxicant, Q55427776 for female reproductive toxicant, Q407752 for neurotoxin, Q1138899 for endocrine disruptors, 
-BIND (fn:substring(?cas2,0) as ?cas3)
-FILTER (?cas1 = ?cas3)
-} ORDER BY ASC (?chemName)""" ;
-    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
-    dc:contributor "Marvin Martens" .
-
-
-ex:4 a sh:SPARQLExecutable,
-       sh:SPARQLSelectExecutable ;
-    rdfs:comment "[fill out comment here]"@en ;
-    sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX edam: <http://edamontology.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -140,7 +26,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:5 a sh:SPARQLExecutable,
+ex:1 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -163,7 +49,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:6 a sh:SPARQLExecutable,
+ex:2 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -178,7 +64,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:7 a sh:SPARQLExecutable,
+ex:3 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -195,7 +81,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:8 a sh:SPARQLExecutable,
+ex:4 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -211,7 +97,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:9 a sh:SPARQLExecutable,
+ex:5 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -230,7 +116,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:10 a sh:SPARQLExecutable,
+ex:6 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -249,7 +135,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:11 a sh:SPARQLExecutable,
+ex:7 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -272,7 +158,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:12 a sh:SPARQLExecutable,
+ex:8 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -281,7 +167,7 @@ ex:12 a sh:SPARQLExecutable,
     dc:contributor "Marvin Martens" .
 
 
-ex:13 a sh:SPARQLExecutable,
+ex:9 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -304,7 +190,7 @@ SELECT ?AO ?AOname ?AOP (CONCAT('"',GROUP_CONCAT(?ChemicalName;SEPARATOR='","'),
     dc:contributor "Marvin Martens" .
 
 
-ex:14 a sh:SPARQLExecutable,
+ex:10 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -327,7 +213,7 @@ VALUES ?aop_id {"AOP 12" "AOP 57"}
     dc:contributor "Marvin Martens" .
 
 
-ex:15 a sh:SPARQLExecutable,
+ex:11 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -336,7 +222,7 @@ ex:15 a sh:SPARQLExecutable,
     dc:contributor "Marvin Martens" .
 
 
-ex:16 a sh:SPARQLExecutable,
+ex:12 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -351,7 +237,7 @@ SELECT ?AOP ?AOPTitle WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:17 a sh:SPARQLExecutable,
+ex:13 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -370,7 +256,7 @@ SELECT ?MIEwebpage ?MolecularInitiatingEventName ?AOwebpage  ?AdverseOutcomeName
     dc:contributor "Marvin Martens" .
 
 
-ex:18 a sh:SPARQLExecutable,
+ex:14 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -379,7 +265,7 @@ ex:18 a sh:SPARQLExecutable,
     dc:contributor "Marvin Martens" .
 
 
-ex:19 a sh:SPARQLExecutable,
+ex:15 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -394,7 +280,7 @@ WHERE {
     dc:contributor "Marvin Martens" .
 
 
-ex:20 a sh:SPARQLExecutable,
+ex:16 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -403,7 +289,7 @@ ex:20 a sh:SPARQLExecutable,
     dc:contributor "Marvin Martens" .
 
 
-ex:21 a sh:SPARQLExecutable,
+ex:17 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -412,7 +298,7 @@ ex:21 a sh:SPARQLExecutable,
     dc:contributor "Marvin Martens" .
 
 
-ex:22 a sh:SPARQLExecutable,
+ex:18 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -430,7 +316,7 @@ WHERE{
     dc:contributor "Marvin Martens" .
 
 
-ex:23 a sh:SPARQLExecutable,
+ex:19 a sh:SPARQLExecutable,
        sh:SPARQLSelectExecutable ;
     rdfs:comment "[fill out comment here]"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
