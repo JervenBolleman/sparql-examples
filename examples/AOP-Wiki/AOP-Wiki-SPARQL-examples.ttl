@@ -20,6 +20,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 #This query takes all Stressor chemicals in the AOP-Wiki and their mappings to ChEBI IDs 
 #Then, these ChEBI IDs are used to look up human molecular pathways in WikiPathways
 
+PREFIX wp: <http://vocabularies.wikipathways.org/wp#>
 
 SELECT DISTINCT ?ChemicalName ?mappedid ?LinkedStressor (group_concat(?LinkedAOP;separator=',') as ?AOPs) (STR(?PathwayID) AS ?Pathway_ID) 
 (STR(?PathwayTitle) AS ?PathwayName) ?PathwayURI 
@@ -46,6 +47,8 @@ ex:1 a sh:SPARQLExecutable,
     sh:select """PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX fn: <http://www.w3.org/2005/xpath-functions/#>
 PREFIX ncbitaxon: <http://purl.bioontology.org/ontology/NCBITAXON/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT  distinct ?tax (group_concat(distinct ?name;separator=" | ") as ?names) count(distinct ?keker) as ?n 
 WHERE {
@@ -97,6 +100,10 @@ PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX fn: <http://www.w3.org/2005/xpath-functions/#>
 PREFIX nci: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 SELECT  distinct  ?cas1 ?chemName ?AOPTitle
 WHERE {
     ?chem a cheminf:000000 ;
