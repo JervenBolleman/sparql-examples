@@ -1,0 +1,338 @@
+
+@prefix ex: <https://bigcat-um.github.io/sparql-examples/AOP-Wiki/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+
+ex:0 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?id ?ncbi
+WHERE {
+    ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
+    ?object skos:exactMatch ?id.
+    ?id a edam:data_1027; edam:data_1027 ?ncbi.
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:1 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX pato: <http://purl.obolibrary.org/obo/PATO_>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?objectname ?uniprot ?prot
+WHERE {
+    ?aop a aopo:AdverseOutcomePathway ;
+        rdfs:label ?aop_id;
+        aopo:has_key_event ?ke.
+    ?ke pato:0001241 ?object; dc:title ?ketitle; rdfs:label ?keid.
+    ?object dc:title ?objectname; skos:exactMatch ?prot.
+    ?prot a edam:data_2291; edam:data_2291 ?uniprot.
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:2 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?AOP ?AOPName
+WHERE {
+ ?AOP a aopo:AdverseOutcomePathway ;
+ dc:title ?AOPName . 
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:3 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT  distinct  ?keid ?ketitle ?hgnc
+WHERE {
+    ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
+    ?object edam:data_2298 ?hgnc.
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:4 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?CAS ?ChemicalName
+WHERE {
+ ?cas a cheminf:000000 ;
+ dc:title ?ChemicalName ;
+ cheminf:000446 ?CAS . 
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:5 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?id ?ensembl
+WHERE {
+    ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
+    ?object skos:exactMatch ?id.
+    ?id a edam:data_2291; edam:data_2291 ?ensembl.
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:6 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?id ?ensembl
+WHERE {
+    ?ke a aopo:KeyEvent; edam:data_1025 ?object; dc:title ?ketitle; rdfs:label ?keid.
+    ?object skos:exactMatch ?id.
+    ?id a edam:data_1033; edam:data_1033 ?ensembl.
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:7 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX pato: <http://purl.obolibrary.org/obo/PATO_>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT  distinct  ?keid ?ketitle ?objectname ?prot
+WHERE {
+    ?aop a aopo:AdverseOutcomePathway ;
+        rdfs:label ?aop_id;
+        aopo:has_key_event ?ke.
+    ?ke pato:0001241 ?object; dc:title ?ketitle; rdfs:label ?keid.
+    ?object dc:title ?objectname; skos:exactMatch ?prot.
+    ?prot a edam:data_1027.
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:8 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """select (COUNT(?p) as ?Predicates)  where {?s ?p ?o. FILTER regex(?p, "http://aopkb.org/aop_ontology#")}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:9 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX nci: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+SELECT ?AO ?AOname ?AOP (CONCAT('"',GROUP_CONCAT(?ChemicalName;SEPARATOR='","'),'"') AS ?ChemicalNames) WHERE {
+  ?AO a aopo:KeyEvent ; 
+  dc:identifier ?AOLookup ; 
+  dc:title ?AOname . 
+  ?AOP a aopo:AdverseOutcomePathway ; 
+  aopo:has_adverse_outcome ?AOLookup ;
+  nci:C54571 ?Stressor .
+  ?Stressor dc:title ?StressorName.
+  OPTIONAL {?Stressor aopo:has_chemical_entity ?Chemical. 
+            ?Chemical dc:title ?ChemicalName.}
+  FILTER regex (?AOname, "fibrosis", "i")}
+  GROUP BY ?AO ?AOname ?AOP
+  ORDER BY DESC (?AO)""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:10 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX mmo: <http://purl.obolibrary.org/obo/MMO_>
+PREFIX ncbitaxon: <http://purl.bioontology.org/ontology/NCBITAXON/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT  DISTINCT ?aop ?ke (group_concat(distinct ?speciesname;separator=" | ") as ?speciesnames) ?method
+WHERE {
+    ?aop a aopo:AdverseOutcomePathway ;
+        rdfs:label ?aop_id;
+        aopo:has_key_event ?ke.
+    ?ke ncbitaxon:131567 ?taxon.
+    ?taxon a ncbitaxon:131567; dc:title ?speciesname
+    OPTIONAL {?ke mmo:0000000 ?method.}
+VALUES ?aop_id {"AOP 12" "AOP 57"}
+} 
+GROUP BY ?aop ?ke ?method
+ORDER BY ASC (?aop)""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:11 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """select (COUNT(?o) as ?Objects)  where {?s ?p ?o. FILTER regex(?o, "http://aopkb.org/aop_ontology#")}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:12 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aop.events: <https://identifiers.org/aop.events/>
+PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?AOP ?AOPTitle WHERE { 
+  ?AOP a aopo:AdverseOutcomePathway ; 
+  dc:title ?AOPTitle ;
+  aopo:has_adverse_outcome aop.events:1276.}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:13 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aop.events: <https://identifiers.org/aop.events/>
+PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?MIEwebpage ?MolecularInitiatingEventName ?AOwebpage  ?AdverseOutcomeName WHERE { 
+  ?MIEwebpage dc:identifier ?MIELookup ; 
+  dc:title ?MolecularInitiatingEventName . 
+  ?AOPwebpage a aopo:AdverseOutcomePathway ; 
+  aopo:has_molecular_initiating_event ?MIELookup; 
+  aopo:has_adverse_outcome ?AOwebpage. 
+  ?AOwebpage dc:title ?AdverseOutcomeName .
+  FILTER (?MIEwebpage = aop.events:18)}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:14 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """select (COUNT(distinct *) as ?Triples)  where {?s ?p ?o}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:15 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX pav: <http://purl.org/pav/>
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT DISTINCT ?dataset ?date
+WHERE {
+   ?dataset a void:Dataset ;
+   pav:createdOn ?date .
+ }""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:16 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """select (COUNT(?p) as ?Predicates)  where {?s ?p ?o. FILTER regex(?p, "http://aopkb.org/aop_ontology#")}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:17 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """select (COUNT(?o) as ?Objects)  where {?s ?p ?o. FILTER regex(?o, "http://aopkb.org/aop_ontology#")}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:18 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX aopo: <http://aopkb.org/aop_ontology#>
+PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX nci: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+SELECT ?aop ?aoptitle ?CASID ?chemicalname
+WHERE{
+?aop a aopo:AdverseOutcomePathway; nci:C54571 ?Stressor; dc:title ?aoptitle.
+?Stressor aopo:has_chemical_entity ?Chemical.
+?Chemical cheminf:000446 ?CASID ; dc:title ?chemicalname.
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
+
+ex:19 a sh:SPARQLExecutable,
+       sh:SPARQLSelectExecutable ;
+    rdfs:comment "[fill out comment here]"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX cheminf: <http://semanticscience.org/resource/CHEMINF_>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?CAS ?ChemicalName ?MatchingIDs
+WHERE {
+ ?CAS a cheminf:000000 ;
+ dc:title ?ChemicalName ;
+ cheminf:000446 ?CAS  ;
+  skos:exactMatch ?MatchingIDs .   
+}""" ;
+    schema:target <https://aopwiki.rdf.bigcat-bioinformatics.org/sparql/> ;
+    dc:contributor "Marvin Martens" .
+
