@@ -36,9 +36,12 @@ for root, dirs, files in os.walk(input_directory):
             # Construct full file path
             sparql_query_file = os.path.join(root, file)
             
-            # Read the SPARQL query from the .rq file and filter out any existing "PREFIX" lines
+            # Read the SPARQL query from the .rq file and filter out any "PREFIX" and "ORDER BY" lines
             with open(sparql_query_file, "r") as query_file:
-                query_lines = [line for line in query_file if not line.strip().startswith("PREFIX")]
+                query_lines = [
+                    line for line in query_file 
+                    if not line.strip().startswith("PREFIX") and not line.strip().startswith("ORDER BY ")
+                ]
                 sparql_query = "".join(query_lines)
 
             # Identify required prefixes based on keywords in the query
