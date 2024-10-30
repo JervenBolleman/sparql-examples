@@ -1,13 +1,16 @@
 import pandas as pd
 
-# Load the TSV file
+# Load the TSV file with prefixes
 df = pd.read_csv("./AOP-Wiki-prefixes.tsv", sep="\t")
 
-# Create the TTL file
-ttl_filename = "prefixes.ttl"
-with open(ttl_filename, "w") as ttl_file:
-    # Write TTL header and ontology information
-    ttl_file.write('''
+# Define the path to the existing prefixes.ttl file (one folder up)
+ttl_filename = "../prefixes.ttl"
+
+# Open the existing TTL file in append mode
+with open(ttl_filename, "a") as ttl_file:
+    # Check if the file is initially empty to add header information if needed
+    if ttl_file.tell() == 0:  # If the file is empty, write header
+        ttl_file.write('''
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -17,7 +20,7 @@ _:aopwiki_sparql_examples_prefixes a owl:Ontology ;
   owl:imports sh: .
 ''')
 
-    # Iterate over the dataframe to create individual prefix declarations
+    # Append individual prefix declarations to the TTL file
     for _, row in df.iterrows():
         prefix, uri = row['Prefix'], row['URI']
         
@@ -26,4 +29,4 @@ _:aopwiki_sparql_examples_prefixes a owl:Ontology ;
         ttl_file.write(f"_:prefix_{prefix} sh:prefix \"{prefix}\" ;\n")
         ttl_file.write(f"  sh:namespace \"{uri}\"^^xsd:anyURI .\n\n")
 
-print(f"Turtle file '{ttl_filename}' created successfully.")
+print(f"Prefixes successfully appended to '{ttl_filename}'.")
